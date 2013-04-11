@@ -163,6 +163,14 @@ namespace ClearCanvas.Dicom.Utilities.Anonymization
 			//Type 3, General Image
 			yield return DicomTags.ImageComments;
 
+            //Modality Worklist-populated fields that can contain PHI
+            //Type 3, Performed Procedure Step Summary Macro
+		    yield return DicomTags.PerformedProcedureStepId;
+            //Type 1C, Requested Procedure
+		    yield return DicomTags.RequestedProcedureId;
+            //Type 2, Imaging Service Request
+		    yield return DicomTags.FillerOrderNumberImagingServiceRequest;
+
 			//NOTE: In RemoveTags
 			//Type 3, General Series, RT Series, Mammo Series, Encapsulted Document
 			//yield return DicomTags.RequestAttributesSequence;
