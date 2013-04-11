@@ -64,4 +64,4 @@ ImageServer/Web/Application/Pages/Help/UsersGuide/*
 ReferencedAssemblies
 
 # Local Mercurial repository
-.hg/*.*
+.hg
