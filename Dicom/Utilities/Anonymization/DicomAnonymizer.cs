@@ -539,6 +539,10 @@ namespace ClearCanvas.Dicom.Utilities.Anonymization
 					foreach (string datetime in (string[]) attribute.Values)
 						attribute.SetString(i++, AdjustDateTime(datetime, _studyDateDifference.Value));
 				}
+                else if (attribute is DicomAttributeTM)
+                {
+                    attribute.SetString(i++, "120000.000");
+                }
 			}
 			else
 			{

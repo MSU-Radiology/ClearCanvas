@@ -170,14 +170,16 @@ namespace ClearCanvas.Dicom.Utilities.Anonymization
 		    yield return DicomTags.RequestedProcedureId;
             //Type 2, Imaging Service Request
 		    yield return DicomTags.FillerOrderNumberImagingServiceRequest;
+            //Type 3, Contribution DateTime
+		    yield return DicomTags.ContributionDateTime;
 
-			//NOTE: In RemoveTags
-			//Type 3, General Series, RT Series, Mammo Series, Encapsulted Document
-			//yield return DicomTags.RequestAttributesSequence;
-			
-			//NOTE: Specific to SR Documents; way too complicated to try and do this one at the moment.
-			//Type 1C, Document Relationship Macro, SR Document Keys
-			//yield return DicomTags.ContentSequence;
+		    //NOTE: In RemoveTags
+		    //Type 3, General Series, RT Series, Mammo Series, Encapsulted Document
+		    //yield return DicomTags.RequestAttributesSequence;
+
+		    //NOTE: Specific to SR Documents; way too complicated to try and do this one at the moment.
+		    //Type 1C, Document Relationship Macro, SR Document Keys
+		    //yield return DicomTags.ContentSequence;
 		}
 
 		private static IEnumerable<uint> GetDateTimeTagsToAdjust()
@@ -186,6 +188,9 @@ namespace ClearCanvas.Dicom.Utilities.Anonymization
 			// might be affected by a change in study date.
 			yield return DicomTags.InstanceCreationDate;
 			yield return DicomTags.InstanceCreationTime;
+
+            //Type 2, Study Time
+            yield return DicomTags.StudyTime;
 
 			yield return DicomTags.SeriesDate;
 			yield return DicomTags.SeriesTime;
@@ -213,10 +218,14 @@ namespace ClearCanvas.Dicom.Utilities.Anonymization
 			yield return DicomTags.SubstanceAdministrationDatetime;
 			
 			yield return DicomTags.CreationDate;
-			
-			//yield return DicomTags.RtPlanDate;
-			
-			//yield return DicomTags.SourceStrengthReferenceDate;
+
+            //Added by CD import tools
+            //Type 1, Attribute Modification DateTime
+		    yield return DicomTags.AttributeModificationDatetime;
+
+		    //yield return DicomTags.RtPlanDate;
+
+		    //yield return DicomTags.SourceStrengthReferenceDate;
 		}
 
 #if UNIT_TESTS
